@@ -1,0 +1,156 @@
+.contact-wrapper {
+  .image-and-form-wrapper {
+    display: flex;
+    width: 100%;
+    height: 650px;
+
+    .image-wrapper {
+      width: 60%;
+      height: 100%;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        transition: transform 2s, filter 1.5s ease-in-out;
+        transform-origin: center center;
+        filter: brightness(100%);
+
+        &:hover {
+          filter: brightness(125%);
+        }
+      }
+    }
+
+    .form-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #71C34E;
+      width: 40%;
+      height: 100%;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+  }
+
+  .help-wrapper {
+    width: 100%;
+    background-color: #e7302a;
+    padding: 50px 10%;
+    box-sizing: border-box;
+
+    h1 {
+      color: #ffffff;
+      font-weight: normal;
+      font-size: 40pt;
+      text-align: center;
+      margin: 0;
+      margin-bottom: 50px;
+    }
+
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      color: #ffffff;
+
+      .content {
+        display: flex;
+        justify-content: center;
+        width: 90%;
+        margin: 0 auto 50px;
+
+        .icon-wrapper {
+          margin: 0 30px;
+
+          img {
+            width: 60px;
+            height: 60px;
+          }
+        }
+
+        .content-desc-wrapper {
+          width: 60%;
+
+          h3 {
+            margin: 0;
+          }
+
+          p {
+            margin: 5px auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .contact-wrapper {
+    .image-and-form-wrapper {
+      display: flex;
+      flex-direction: column-reverse;
+      width: 100%;
+      height: 1000px;
+
+      .image-wrapper {
+        width: 100%;
+        height: auto;
+      }
+
+      .form-wrapper {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .contact-wrapper {
+    margin-top: 150px;
+    .image-and-form-wrapper {
+      display: flex;
+      width: 100%;
+      height: 650px;
+
+      .form-wrapper {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .help-wrapper {
+      width: 100%;
+
+      h1 {
+        font-size: 20pt;
+      }
+
+      .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          margin: 0 auto 50px;
+
+          .icon-wrapper {
+            margin: 20px 30px;
+          }
+
+          .content-desc-wrapper {
+            width: 90%;
+          }
+        }
+      }
+    }
+  }
+}

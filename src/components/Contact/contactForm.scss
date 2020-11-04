@@ -1,0 +1,38 @@
+.contactform-wrapper {
+  color: #ffffff;
+
+  h1 {
+    margin: 0;
+    margin-bottom: 50px;
+    font-weight: normal;
+    font-size: 30pt;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+
+    .MuiTextField-root {
+      background-color: white;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #e7312b;
+      color: white;
+      width: max-content;
+      margin: 20px auto 0;
+      text-transform: none;
+
+      &:hover {
+        background-color: #ac2520;
+      }
+    }
+  }
+}
