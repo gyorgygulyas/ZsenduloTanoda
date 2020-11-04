@@ -1,0 +1,141 @@
+.aboutus-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10%;
+  margin: 0px auto 50px;
+  max-width: 1300px;
+
+  h1 {
+    font-size: 40pt;
+    font-weight: normal;
+    color: #707070;
+  }
+
+  .articles-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+    grid-gap: 20px;
+    justify-items: center;
+
+    margin: 50px auto;
+
+    width: 100%;
+
+    .article {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 700px;
+
+      // border: 1px solid #707070;
+      background-color: #f9f9f9;
+      border-top: 5px solid #f7dc69;
+      border-radius: 10px;
+      margin: 30px auto;
+      padding: 30px;
+      box-sizing: border-box;
+
+      text-align: center;
+
+      h5 {
+        font-size: 20pt;
+        margin: 0;
+        margin-bottom: 10px;
+        font-weight: medium;
+      }
+
+      .image-wrapper {
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      p {
+        font-size: 12pt;
+        line-height: 1.5em;
+        color: #707070;
+      }
+
+      a {
+        width: max-content;
+        width: max-content;
+        min-width: 200px;
+        margin: 0 auto;
+        text-decoration: none;
+
+        button {
+          background-color: #f7dc69;
+          color: black;
+
+          &:hover {
+            background-color: #bba74d;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .aboutus-wrapper {
+    max-width: 1200px;
+
+    h1 {
+      font-size: 40pt;
+    }
+
+    .articles-wrapper {
+      .article {
+        h5 {
+          font-size: 16pt;
+        }
+
+        p {
+          font-size: 12pt;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .aboutus-wrapper {
+    h1 {
+      font-size: 30pt;
+    }
+
+    .articles-wrapper {
+      .article {
+        h5 {
+          font-size: 13pt;
+        }
+
+        p {
+          font-size: 10pt;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .aboutus-wrapper {
+    .articles-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .aboutus-wrapper {
+    .articles-wrapper {
+      grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+    }
+  }
+}

@@ -1,0 +1,258 @@
+.accessibility-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 100px 10%;
+  box-sizing: border-box;
+
+  .accessibility-body {
+    display: flex;
+    width: 80%;
+    max-width: 1300px;
+    height: 100%;
+    padding: 20px 30px;
+    background-color: #71C34E;
+    border-radius: 10px;
+
+    .accessibility-main {
+      width: 50%;
+      color: #ffffff;
+
+      h1 {
+        margin: 0;
+        font-weight: normal;
+        font-size: 35pt;
+        margin-bottom: 20px;
+      }
+    }
+
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      color: #ffffff;
+
+      .content {
+        display: flex;
+        width: 100%;
+        margin: 0 auto 30px;
+
+        .icon-wrapper {
+          margin: 0 30px 0 0;
+
+          img {
+            width: 60px;
+            height: 60px;
+          }
+        }
+
+        .content-desc-wrapper {
+          width: 80%;
+
+          h3 {
+            margin: 0 0 10px 0;
+
+            a {
+              color: inherit;
+              text-decoration: none;
+            }
+          }
+
+          section {
+            display: flex;
+            justify-content: space-between;
+
+            div {
+              min-width: 50%;
+              p {
+                margin: 5px auto;
+              }
+            }
+
+            .desc {
+              width: 100%;
+              max-width: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    .image-wrapper {
+      width: 50%;
+      img {
+        margin-left: 10%;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .contact-wrapper {
+    margin: 50px auto 0;
+    .contacts {
+      display: flex;
+      justify-content: center;
+
+      .contact {
+        margin: 0 10px;
+        width: 62px;
+        height: 62px;
+
+        a {
+          color: transparent;
+          img {
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+            transition: border-color 500ms;
+          }
+        }
+
+        &:hover {
+          a {
+            img {
+              border: 2px solid #e7302a;
+              transition: border-color 500ms;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .accessibility-wrapper {
+    .accessibility-body {
+      width: 90%;
+
+      .accessibility-main {
+        h1 {
+          font-size: 30pt;
+          margin-bottom: 20px;
+        }
+      }
+
+      .content-wrapper {
+        .content {
+          margin: 0 auto 30px;
+
+          .icon-wrapper {
+            margin: 0 20px 0 0;
+
+            img {
+              width: 50px;
+              height: 50px;
+            }
+          }
+
+          .content-desc-wrapper {
+            width: 90%;
+            font-size: 10pt;
+
+            h3 {
+              margin: 0 0 10px 0;
+            }
+          }
+        }
+      }
+    }
+
+    .contact-wrapper {
+      .contacts {
+        .contact {
+          width: 52px;
+          height: 52px;
+
+          a {
+            img {
+              width: 50px;
+              height: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .accessibility-wrapper {
+    .accessibility-body {
+      flex-direction: column;
+      width: 100%;
+
+      .accessibility-main {
+        width: 100%;
+
+        h1 {
+          margin: 0;
+          text-align: center;
+          font-weight: normal;
+          font-size: 35pt;
+          margin-bottom: 20px;
+        }
+      }
+
+      .image-wrapper {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .accessibility-wrapper {
+    .accessibility-body {
+      .accessibility-main {
+        h1 {
+          font-size: 20pt;
+        }
+      }
+
+      .content-wrapper {
+        .content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          .icon-wrapper {
+            margin: 0;
+            margin-bottom: 20px;
+          }
+
+          .content-desc-wrapper {
+            h3 {
+              margin: 0 0 10px 0;
+            }
+
+            section {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+            }
+          }
+        }
+      }
+
+      .image-wrapper {
+        width: 100%;
+        img {
+          margin-left: 0;
+          margin-bottom: -20%;
+        }
+      }
+    }
+
+    .contact-wrapper {
+      margin: 80px auto 0;
+    }
+  }
+}
