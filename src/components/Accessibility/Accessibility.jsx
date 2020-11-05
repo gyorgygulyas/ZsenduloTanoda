@@ -3,27 +3,62 @@ import Fade from 'react-reveal/Fade';
 
 import GoogleMapReact from 'google-map-react';
 
-import superman from '../../assets/images/superman.png';
-import key from '../../assets/images/key.png';
-import address from '../../assets/images/address.png';
-import email_orange from '../../assets/images/email_orange.png';
-import phone_orange from '../../assets/images/phone_orange.png';
+import { graphql, useStaticQuery } from 'gatsby';
+
 import './accessibility.scss';
 
 const Accessibility = () => {
-  const isClient = typeof window !== 'undefined';
+  const data = useStaticQuery(graphql`
+    query SupermanAndLogos {
+      superman: file(relativePath: { eq: "superman.png" }) {
+        childImageSharp {
+          fluid {
+            srcSet
+          }
+        }
+      }
+      key: file(relativePath: { eq: "icons/key.png" }) {
+        childImageSharp {
+          fluid {
+            srcSet
+          }
+        }
+      }
+      address: file(relativePath: { eq: "icons/address.png" }) {
+        childImageSharp {
+          fluid {
+            srcSet
+          }
+        }
+      }
+      email_orange: file(relativePath: { eq: "icons/email_orange.png" }) {
+        childImageSharp {
+          fluid {
+            srcSet
+          }
+        }
+      }
+      phone_orange: file(relativePath: { eq: "icons/phone_orange.png" }) {
+        childImageSharp {
+          fluid {
+            srcSet
+          }
+        }
+      }
+    }
+  `);
 
   const renderMarker = (map, maps) => {
     let marker = new maps.Marker({
-    position: {
-      lat: 47.492567,
-      lng: 19.079697
-    },
-    map,
-    title: 'Zsendülő Tanoda'
+      position: {
+        lat: 47.492567,
+        lng: 19.079697
+      },
+      map,
+      title: 'Zsendülő Tanoda'
     });
     return marker;
-   };
+  };
 
   return (
     <Fade big>
@@ -34,7 +69,10 @@ const Accessibility = () => {
             <div className="content-wrapper">
               <div className="content">
                 <div className="icon-wrapper">
-                  <img src={key} alt={`opening_hours`} />
+                  <img
+                    srcSet={data.key.childImageSharp.fluid.srcSet}
+                    alt={`opening_hours`}
+                  />
                 </div>
                 <div className="content-desc-wrapper">
                   <h3>Nyitvatartás</h3>
@@ -56,7 +94,10 @@ const Accessibility = () => {
             <div className="content-wrapper">
               <div className="content">
                 <div className="icon-wrapper">
-                  <img src={address} alt={`address`} />
+                  <img
+                    srcSet={data.address.childImageSharp.fluid.srcSet}
+                    alt={`address`}
+                  />
                 </div>
                 <div className="content-desc-wrapper">
                   <h3>
@@ -78,20 +119,27 @@ const Accessibility = () => {
                       </p>
                     </div>
                   </section>
-                  <div style={{ height: '200px', width: '100%', marginTop: '50px' }}>
+                  <div
+                    style={{
+                      height: '200px',
+                      width: '100%',
+                      marginTop: '50px'
+                    }}
+                  >
                     <GoogleMapReact
                       bootstrapURLKeys={{
-                        key: process.env.GOOGLE_MAPS_API_KEY
+                        key: process.env.GATSBY_GOOGLE_MAPS_API_KEY
                       }}
                       defaultCenter={{
                         lat: 47.492567,
                         lng: 19.079697
                       }}
                       defaultZoom={16}
-                      onGoogleApiLoaded={({ map, maps }) => renderMarker(map, maps)}
+                      onGoogleApiLoaded={({ map, maps }) =>
+                        renderMarker(map, maps)
+                      }
                       yesIWantToUseGoogleMapApiInternals
-                    >
-                    </GoogleMapReact>
+                    ></GoogleMapReact>
                   </div>
                 </div>
               </div>
@@ -100,7 +148,10 @@ const Accessibility = () => {
 
           <Fade big>
             <div className="image-wrapper">
-              <img src={superman} alt="superman" />
+              <img
+                srcSet={data.superman.childImageSharp.fluid.srcSet}
+                alt="superman"
+              />
             </div>
           </Fade>
         </div>
@@ -113,7 +164,10 @@ const Accessibility = () => {
                 rel={'noopener noreferrer nofollower'}
                 aria-label={'zsendulo email'}
               >
-                <img src={email_orange} alt="zsendulo email" />
+                <img
+                  srcSet={data.email_orange.childImageSharp.fluid.srcSet}
+                  alt="zsendulo email"
+                />
               </a>
             </div>
             <div className="contact">
@@ -122,7 +176,10 @@ const Accessibility = () => {
                 rel={'noopener noreferrer nofollower'}
                 aria-label={'zsendulo telefon'}
               >
-                <img src={phone_orange} alt="zsendulo email" />
+                <img
+                  srcSet={data.phone_orange.childImageSharp.fluid.srcSet}
+                  alt="zsendulo email"
+                />
               </a>
             </div>
           </div>

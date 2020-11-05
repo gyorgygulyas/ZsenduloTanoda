@@ -1,14 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick';
 
-import { Link } from 'gatsby';
-
-import sodexo from '../../assets/images/sodexo.jpg';
-import jozsefvaros from '../../assets/images/jozsefvaros.jpg';
-import kesztyugyar from '../../assets/images/kesztyugyar_kozossegi_haz_logo.png';
-import noe from '../../assets/images/noe.jpg';
-import pest_immami from '../../assets/images/pest_immami.png';
-import united_way from '../../assets/images/united_way.jpg';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
@@ -56,39 +49,89 @@ export function PrevArrow(props) {
 }
 
 const Partners = () => {
+  const data = useStaticQuery(graphql`
+    query PartnerLogos {
+      sodexo: file(relativePath: { eq: "partnerLogos/sodexo.jpg" }) {
+        childImageSharp {
+          fluid {
+            srcSet
+          }
+        }
+      }
+      jozsefvaros: file(relativePath: { eq: "partnerLogos/jozsefvaros.jpg" }) {
+        childImageSharp {
+          fluid {
+            srcSet
+          }
+        }
+      }
+      kesztyugyar: file(
+        relativePath: { eq: "partnerLogos/kesztyugyar_kozossegi_haz_logo.png" }
+      ) {
+        childImageSharp {
+          fluid {
+            srcSet
+          }
+        }
+      }
+      noe: file(relativePath: { eq: "partnerLogos/noe.jpg" }) {
+        childImageSharp {
+          fluid {
+            srcSet
+          }
+        }
+      }
+      pest_immami: file(relativePath: { eq: "partnerLogos/pest_immami.png" }) {
+        childImageSharp {
+          fluid {
+            srcSet
+          }
+        }
+      }
+      united_way: file(relativePath: { eq: "partnerLogos/united_way.jpg" }) {
+        childImageSharp {
+          fluid {
+            srcSet
+          }
+        }
+      }
+    }
+  `);
+
   const partners = [
     {
-      logo: sodexo,
+      logo: data.sodexo.childImageSharp.fluid.srcSet,
       title: 'Sodexo Magyarország Kft.',
       address: '1143 Budapest, Ilka u. 31.',
       url: 'https://hu.sodexo.com'
     },
     {
-      logo: united_way,
+      logo: data.united_way.childImageSharp.fluid.srcSet,
       title: 'Erőforrás Alapítvány United Way',
       address: '1134 Budapest, Váci út 33. IV. em',
       url: 'http://www.unitedway.hu'
     },
     {
-      logo: noe,
+      logo: data.noe.childImageSharp.fluid.srcSet,
       title: 'Józsefvárosi Nagycsaládosok Egyesülete',
       address: '1084 Budapest, Déri Miksa u. 18.',
       url: 'https://noe.hu'
     },
     {
-      logo: jozsefvaros,
+      logo: data.jozsefvaros.childImageSharp.fluid.srcSet,
       title: 'Józsefváros Közösségeiért Nonprofit Zrt.',
       address: '1084, Budapest Mátyás Tér 15.',
       url: 'https://jkn.hu/'
     },
     {
-      logo: pest_immami,
-      title: 'A pesti és a Pest környéki anyukák és kismamák információs oldala',
+      logo: data.pest_immami.childImageSharp.fluid.srcSet,
+      title:
+        'A pesti és a Pest környéki anyukák és kismamák információs oldala',
       address: '1092 Budapest Erkel u. 11. 2/1.',
       url: 'http://www.budapest.imami.hu'
     },
     {
-      logo: kesztyugyar,
+      logo: data.kesztyugyar.childImageSharp.fluid.srcSet,
       title: 'Kesztyűgyár közösségi ház',
       address: '1084, Budapest Mátyás Tér 15.',
       url: 'http://www.kesztyugyar.hu/'
@@ -101,7 +144,7 @@ const Partners = () => {
     speed: 500,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 1,
     initialSlide: 0,
     responsive: [
@@ -109,6 +152,13 @@ const Partners = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 1023,
+        settings: {
+          slidesToShow: 1,
           slidesToScroll: 1
         }
       }
@@ -125,7 +175,10 @@ const Partners = () => {
               <div className="partner-wrapper">
                 {partner.logo ? (
                   <div className="image-wrapper">
-                    <img src={partner.logo} alt={`zsendulo_partner_${index}`} />
+                    <img
+                      srcSet={partner.logo}
+                      alt={`zsendulo_partner_${index}`}
+                    />
                   </div>
                 ) : null}
                 {partner.title ? (

@@ -48,7 +48,11 @@ const Palyazatok = () => {
               <h3>{palyazat.title}</h3>
               <h5>{palyazat.subtitle}</h5>
               <p>{palyazat.description}</p>
-              <Link to={palyazat.button_url} target={'_blank'}>
+              <Link
+                to={palyazat.button_url}
+                target={'_blank'}
+                rel={'nofollow noopener noreferrer'}
+              >
                 <Button className="button_1">{palyazat.button_text}</Button>
               </Link>
             </div>
