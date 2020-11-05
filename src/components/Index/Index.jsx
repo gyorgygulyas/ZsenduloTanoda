@@ -8,12 +8,14 @@ import Palyazatok from '../Palyazatok/Palyazatok';
 import AboutUs from '../AboutUs/AboutUs';
 import Footer from '../Footer/Footer';
 import ScrollTop from '../ScrollToTheTop/ScrollToTheTop';
+import SEO from '../SEO/SEO';
 
 import './index.scss';
 
 const Index = () => {
   return (
     <div className="index-wrapper">
+      <SEO />
       <Header />
       <Introduction />
       <Contact />
