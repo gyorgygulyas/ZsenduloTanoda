@@ -16,7 +16,7 @@ const Footer = () => {
         <p>
           <a
             href="https://www.kesztyugyar.hu"
-            rel={'noopener noreferreer nofollower'}
+            rel={'noopener noreferreer nofollow'}
             target={'__blank'}
           >
             www.kesztyugyar.hu
@@ -25,7 +25,7 @@ const Footer = () => {
         <p>
           <a
             href="https://www.google.com/maps/place/Budapest,+M%C3%A1ty%C3%A1s+t%C3%A9r+15,+1084/"
-            rel={'noopener noreferrer nofollower'}
+            rel={'noopener noreferrer nofollow'}
             target={'__blank'}
           >
             1084 Budapest, Mátyás tér 15.

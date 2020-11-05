@@ -103,7 +103,7 @@ const Accessibility = () => {
                   <h3>
                     <a
                       href="https://www.google.com/maps/place/Budapest,+M%C3%A1ty%C3%A1s+t%C3%A9r+15,+1084/"
-                      rel={'noopener noreferrer nofollower'}
+                      rel={'noopener noreferrer nofollow'}
                       target={'__blank'}
                     >
                       1084 Budapest, Mátyás tér 15.
@@ -161,7 +161,7 @@ const Accessibility = () => {
             <div className="contact">
               <a
                 href="mailto:tanoda@kesztyugyar.hu"
-                rel={'noopener noreferrer nofollower'}
+                rel={'noopener noreferrer nofollow'}
                 aria-label={'zsendulo email'}
               >
                 <img
@@ -173,7 +173,7 @@ const Accessibility = () => {
             <div className="contact">
               <a
                 href="tel:+36306358177"
-                rel={'noopener noreferrer nofollower'}
+                rel={'noopener noreferrer nofollow'}
                 aria-label={'zsendulo telefon'}
               >
                 <img

@@ -17,7 +17,7 @@ export default function BackToTop(props) {
           <div className="contact">
             <a
               href="mailto:tanoda@kesztyugyar.hu"
-              rel={'noopener noreferrer nofollower'}
+              rel={'noopener noreferrer nofollow'}
               aria-label={'zsendulo email'}
             >
               <img src={email} alt="email logo" />
@@ -27,7 +27,7 @@ export default function BackToTop(props) {
           <div className="contact">
             <a
               href="tel:+36306358177"
-              rel={'noopener noreferrer nofollower'}
+              rel={'noopener noreferrer nofollow'}
               aria-label={'zsendulo telefon'}
             >
               <img src={phone} alt="telefon logo" />
@@ -37,7 +37,7 @@ export default function BackToTop(props) {
           <div className="contact">
             <a
               href="https://www.facebook.com/zsendulotanoda"
-              rel={'noopener noreferrer nofollower'}
+              rel={'noopener noreferrer nofollow'}
               aria-label={'zsendulo facebook'}
               target={'__blank'}
             >
