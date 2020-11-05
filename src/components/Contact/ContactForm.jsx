@@ -12,7 +12,7 @@ import recaptchaRef from './recaptchaRef';
 
 import './contactForm.scss';
 
-require("dotenv").config()
+require('dotenv').config();
 
 export function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -41,7 +41,7 @@ const ContactForm = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [snackbar, setSnackBar] = useState(false);
-  const [snackbarError, setSnackBarError] = useState(false);
+  // const [snackbarError, setSnackBarError] = useState(false);
 
   const checkEmail = () => {
     const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -65,8 +65,16 @@ const ContactForm = () => {
     setSnackBar(false);
   };
 
+  const getResult = () => {
+    recaptchaRef.current.execute();
+  };
+
   const onChange = (token) => {
-    fetch(`${process.env.GATSBY_AZURE_URL}/registration`, {
+    // console.log('token', token);
+    // console.log('email', email);
+    // console.log('message', message);
+    // console.log('timestamp', Date.now());
+    fetch(`${process.env.GATSBY_AZURE_URL}`, {
       method: 'POST',
       body: JSON.stringify({
         g_recaptcha_response: token,
@@ -75,12 +83,10 @@ const ContactForm = () => {
         timestamp: Date.now()
       })
     }).then((data) => {
-      if (data.statusText === 'OK' && data.status === 200) {
+      if (data.statusText === 'Ok' && data.status === 200) {
         setSnackBar(true);
       }
     });
-    setSnackBar(true);
-    setSnackBarError(true);
   };
 
   return (
@@ -116,7 +122,7 @@ const ContactForm = () => {
         </FormControl>
         <Button
           disabled={checkInputFields() ? true : false}
-          onClick={() => onChange()}
+          onClick={() => getResult()}
         >
           Felveszem a kapcsolatot
         </Button>
