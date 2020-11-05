@@ -31,7 +31,7 @@ export default function BackToTop(props) {
               aria-label={'zsendulo telefon'}
             >
               <img src={phone} alt="telefon logo" />
-              <div>+36306358177</div>
+              <div>+3630-635-8177</div>
             </a>
           </div>
           <div className="contact">
