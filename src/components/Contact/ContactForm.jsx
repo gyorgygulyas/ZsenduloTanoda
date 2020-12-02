@@ -41,7 +41,7 @@ const ContactForm = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [snackbar, setSnackBar] = useState(false);
-  // const [snackbarError, setSnackBarError] = useState(false);
+  const [snackbarError, setSnackBarError] = useState(false);
 
   const checkEmail = () => {
     const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -63,30 +63,36 @@ const ContactForm = () => {
     }
 
     setSnackBar(false);
+    setSnackBarError(false);
   };
 
   const getResult = () => {
     recaptchaRef.current.execute();
   };
 
-  const onChange = (token) => {
-    // console.log('token', token);
-    // console.log('email', email);
-    // console.log('message', message);
-    // console.log('timestamp', Date.now());
-    fetch(`${process.env.GATSBY_AZURE_URL}`, {
+  const onCaptchaChange = (token) => {
+    fetch(process.env.GATSBY_AZURE_URL, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         g_recaptcha_response: token,
         email,
         message,
         timestamp: Date.now()
       })
-    }).then((data) => {
-      if (data.statusText === 'Ok' && data.status === 200) {
-        setSnackBar(true);
-      }
-    });
+    })
+      .then((data) => {
+        if (data.statusText === 'OK' && data.status === 200) {
+          setSnackBar(true);
+        } else {
+          setSnackBarError(true);
+        }
+      })
+      .catch((e) => {
+        setSnackBarError(true);
+      });
   };
 
   return (
@@ -97,7 +103,7 @@ const ContactForm = () => {
           ref={recaptchaRef}
           size="invisible"
           sitekey={process.env.GATSBY_CAPTCHA_SITE_KEY}
-          onChange={onChange}
+          onChange={onCaptchaChange}
         />
         <FormControl>
           <TextField
@@ -136,6 +142,17 @@ const ContactForm = () => {
       >
         <Alert onClose={handleSnackBarClose} severity="success">
           Sikeresen elküldve!
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={snackbarError}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        style={{ paddingTop: '100px' }}
+        autoHideDuration={6000}
+        onClose={handleSnackBarClose}
+      >
+        <Alert onClose={handleSnackBarClose} severity="error">
+          Hiba történt!
         </Alert>
       </Snackbar>
     </div>
