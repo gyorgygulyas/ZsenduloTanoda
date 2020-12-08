@@ -22,11 +22,43 @@
     }
   }
 
+  .decoration {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+  }
+
+  .decoration_1 {
+    right: 10%;
+    top: 4%;
+    animation: animationFramesOne 10s linear infinite;
+    -webkit-animation: animationFramesOne 10s linear infinite;
+  }
+
+  .decoration_2 {
+    position: absolute;
+    left: 10%;
+    top: 4%;
+    z-index: 2;
+    animation: animationFramesOne 20s linear infinite;
+    -webkit-animation: animationFramesOne 20s linear infinite;
+  }
+
+  .decoration_3 {
+    position: absolute;
+    left: 15%;
+    top: 9%;
+    animation: animationFramesOne 20s linear infinite;
+    -webkit-animation: animationFramesOne 20s linear infinite;
+  }
+
   .description-wrapper {
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 
     #zsendulo_logo {
       max-width: 500px;
@@ -72,6 +104,27 @@
   .introduction-wrapper {
     margin-bottom: 50px;
 
+    .decoration {
+      width: 20px;
+      height: 20px;
+    }
+
+    .decoration_1 {
+      right: 10%;
+      top: 1%;
+      animation: animationFramesOne 30s linear infinite;
+      -webkit-animation: animationFramesOne 30s linear infinite;
+    }
+
+    .decoration_2 {
+      position: absolute;
+      left: 1%;
+      top: 3%;
+      z-index: 2;
+      animation: animationFramesOne 20s linear infinite;
+      -webkit-animation: animationFramesOne 20s linear infinite;
+    }
+
     .description-wrapper {
       .description {
         font-size: 12pt;
@@ -81,5 +134,26 @@
         }
       }
     }
+  }
+}
+
+@keyframes animationFramesOne {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  20% {
+    transform: translate(73px, -1px) rotate(36deg);
+  }
+  40% {
+    transform: translate(141px, 72px) rotate(72deg);
+  }
+  60% {
+    transform: translate(83px, 122px) rotate(108deg);
+  }
+  80% {
+    transform: translate(-40px, 72px) rotate(144deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
   }
 }

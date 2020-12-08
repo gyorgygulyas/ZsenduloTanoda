@@ -12,7 +12,7 @@ import recaptchaRef from './recaptchaRef';
 
 import './contactForm.scss';
 
-require("dotenv").config()
+require('dotenv').config();
 
 export function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -63,24 +63,36 @@ const ContactForm = () => {
     }
 
     setSnackBar(false);
+    setSnackBarError(false);
   };
 
-  const onChange = (token) => {
-    fetch(`${process.env.GATSBY_AZURE_URL}/registration`, {
+  const getResult = () => {
+    recaptchaRef.current.execute();
+  };
+
+  const onCaptchaChange = (token) => {
+    fetch(process.env.GATSBY_AZURE_URL, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         g_recaptcha_response: token,
         email,
         message,
         timestamp: Date.now()
       })
-    }).then((data) => {
-      if (data.statusText === 'OK' && data.status === 200) {
-        setSnackBar(true);
-      }
-    });
-    setSnackBar(true);
-    setSnackBarError(true);
+    })
+      .then((data) => {
+        if (data.statusText === 'OK' && data.status === 200) {
+          setSnackBar(true);
+        } else {
+          setSnackBarError(true);
+        }
+      })
+      .catch((e) => {
+        setSnackBarError(true);
+      });
   };
 
   return (
@@ -91,7 +103,7 @@ const ContactForm = () => {
           ref={recaptchaRef}
           size="invisible"
           sitekey={process.env.GATSBY_CAPTCHA_SITE_KEY}
-          onChange={onChange}
+          onChange={onCaptchaChange}
         />
         <FormControl>
           <TextField
@@ -116,7 +128,7 @@ const ContactForm = () => {
         </FormControl>
         <Button
           disabled={checkInputFields() ? true : false}
-          onClick={() => onChange()}
+          onClick={() => getResult()}
         >
           Felveszem a kapcsolatot
         </Button>
@@ -130,6 +142,17 @@ const ContactForm = () => {
       >
         <Alert onClose={handleSnackBarClose} severity="success">
           Sikeresen elküldve!
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={snackbarError}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        style={{ paddingTop: '100px' }}
+        autoHideDuration={6000}
+        onClose={handleSnackBarClose}
+      >
+        <Alert onClose={handleSnackBarClose} severity="error">
+          Hiba történt!
         </Alert>
       </Snackbar>
     </div>

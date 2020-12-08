@@ -3,11 +3,7 @@
 @font-face {
   font-family: "Monsterrat Regular";
   src: url("../../assets/fonts/Montserrat-Regular.ttf");
-}
-
-@font-face {
-  font-family: "Monsterrat Bold";
-  src: url("../../assets/fonts/Montserrat-Bold.ttf");
+  font-display: swap;
 }
 
 html, body {
